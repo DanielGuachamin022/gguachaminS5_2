@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="gguachaminS5_2.Vistas.AgregarPersona"
+             Title="AgregarPersona">
+    <VerticalStackLayout
+        Padding="25">
+        <Label 
+            Text="Semana 5: Base de datos con SQLite"
+            HorizontalOptions="Center"
+            FontSize="20"/>
+        <Entry x:Name="txtNombre"
+               Placeholder="Ingrese su nombre"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnAgregar"
+                    Text="Agregar Persona"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Clicked="btnAgregar_Clicked"/>
+            <Label x:Name="lblStatusMessage"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            <Button x:Name="btnObtener"
+                    Text="Obtener Personas"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Clicked="btnObtener_Clicked"/>
+
+            <CollectionView x:Name="listPersonas"
+                            Grid.Row="3"
+                            Grid.Column="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Id}"/>
+                            <Label Grid.Column="1" Text="{Binding Name}"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+        
+    </VerticalStackLayout>
+</ContentPage>
