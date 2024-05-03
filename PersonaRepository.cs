@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace gguachaminS5_2
 {
@@ -66,6 +67,48 @@ namespace gguachaminS5_2
                 StatusMessage = string.Format("Failed to retrieve data {0}.", ex.Message);
             }
             return new List<Persona>();
+        }
+        public void UpdatePersona(int id, string nombre)
+        {
+            int result;
+            try
+            {
+                Init();
+
+                //Validar que se ingrese el nombre
+                if (string.IsNullOrEmpty(nombre))
+                    throw new Exception("Nombre requerido");
+
+                Persona persona = new() { Name = nombre , Id = id};
+                result = conn.Update(persona);
+
+                StatusMessage = string.Format("{0} record(s) updated (Nombre: {1})", result, nombre);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to update {0}. Error: {1}", nombre, ex.Message);
+            }
+        }
+        public void DeletePersona(int id)
+        {
+            int result;
+            try
+            {
+                Init();
+
+                //Validar que se ingrese el nombre
+                if (id <= 0)
+                    throw new Exception("Id requerido");
+
+                Persona persona = new() { Id = id };
+                result = conn.Delete(persona);
+
+                StatusMessage = string.Format("{0} record(s) deleted (Nombre: {1})", result, id);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Failed to delete {0}. Error: {1}", id, ex.Message);
+            }
         }
     }
 }

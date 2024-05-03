@@ -6,12 +6,9 @@
     <VerticalStackLayout
         Padding="25">
         <Label 
-            Text="Semana 5: Base de datos con SQLite"
+            Text="Tarea Semana 5 - Guachamin Daniel"
             HorizontalOptions="Center"
             FontSize="20"/>
-        <Entry x:Name="txtNombre"
-               Placeholder="Ingrese su nombre"/>
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -22,25 +19,44 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
-            <Button x:Name="btnAgregar"
-                    Text="Agregar Persona"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Clicked="btnAgregar_Clicked"/>
-            <Label x:Name="lblStatusMessage"
+            <Label Text="Ingresar Nombre"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+            <Entry x:Name="txtNombre"
+               Placeholder="Ingrese su nombre"
                    Grid.Row="1"
                    Grid.Column="0"/>
-            <Button x:Name="btnObtener"
-                    Text="Obtener Personas"
+            <Button x:Name="btnAgregar"
+                    Text="Agregar Persona"
                     Grid.Row="2"
                     Grid.Column="0"
+                    Clicked="btnAgregar_Clicked"/>
+        
+            <Label x:Name="lblStatusMessage"
+                   Grid.Row="4"
+                   Grid.Column="0"/>
+
+            <Label Text="Listado de Nombres"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+            <Button x:Name="btnObtener"
+                    Text="Obtener Personas"
+                    Grid.Row="1"
+                    Grid.Column="1"
                     Clicked="btnObtener_Clicked"/>
 
             <CollectionView x:Name="listPersonas"
-                            Grid.Row="3"
-                            Grid.Column="0">
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            SelectionMode="Single"
+                            SelectionChanged="listPersonas_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -56,6 +72,49 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Actualizar Nombre"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+            <Entry x:Name="txtNombreActualizado"
+                   Placeholder="Ingrese su nombre"
+                   Grid.Row="1"
+                   Grid.Column="0"/>
+            <Button x:Name="btnActualizar"
+                    Text="Actualizar Nombre"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Clicked="btnActualizar_Clicked"/>
+
+            <Label Text="Eliminar Nombre"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"/>
+            <Entry x:Name="txtNombreEliminar"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   IsEnabled="False"/>
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar Nombre"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Clicked="btnEliminar_Clicked"/>
+
+        </Grid>
     </VerticalStackLayout>
 </ContentPage>
